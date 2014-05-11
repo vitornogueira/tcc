@@ -1,0 +1,76 @@
+<header class="pop-header">
+	<button id="wow" class="pop-menu-btn transition" data-ng-click="toggleMenu()">
+		<span class="fa fa-bars"></span>
+		<span class="hidden-xs">MENU</span>
+	</button>
+	<img src="public/assets/img/logo.png" height="30" width="30" alt="Logo Popcorn" class="pop-logo">
+</header>
+<aside data-ng-class="{'is-open': openMenu}" class="pop-menu transition">
+	<a ui-sref="root" data-ng-click="toggleMenu('Home')" class="pop-menu-item transition">
+		<span class="fa fa-home fa-fw fa-2x"></span>
+		Home
+	</a>
+	<a ui-sref="root.user" data-ng-click="toggleMenu('Usuários')" class="pop-menu-item transition">
+		<span class="fa fa-users fa-fw fa-2x"></span>
+		Usuários
+	</a>
+	<a ui-sref="root.project" data-ng-click="toggleMenu('Projetos')" class="pop-menu-item transition">
+		<span class="fa fa-laptop fa-fw fa-2x"></span>
+		Projetos
+	</a>
+	<a ui-sref="root.enterprise" data-ng-click="toggleMenu('Empresas')" class="pop-menu-item transition">
+		<span class="fa fa-suitcase fa-fw fa-2x"></span>
+		Empresas
+	</a>
+	<a ui-sref="root.setting" data-ng-click="toggleMenu('Configurações')" class="pop-menu-item transition">
+		<span class="fa fa-gears fa-fw fa-2x"></span>
+		Configurações
+	</a>
+	<hr>
+	<a ui-sref="root.profile" data-ng-click="toggleMenu('Perfil')" class="pop-menu-item transition">
+		<span class="fa fa-user fa-fw fa-2x"></span>
+		Perfil
+	</a>
+	<a href="#" data-ng-click="logout()" class="pop-menu-item transition">
+		<span class="fa fa-smile-o fa-fw fa-2x"></span>
+		Ajuda
+	</a>
+	<a href="#" data-ng-click="logout()" class="pop-menu-item transition">
+		<span class="fa fa-sign-out fa-fw fa-2x"></span>
+		Sair
+	</a>
+</aside>
+<div data-ng-class="{'is-open': openMenu}" class="overlay" data-ng-click="toggleMenu()"></div>
+<flash></flash>
+<div data-ng-class="{'is-open': openMenu}" class="wrap-content transition">
+	<section ui-view>
+		<div class="row">
+			<div class="col-lg-9">
+				<h1>Bem vindo!</h1>
+				<div class="pop-box">
+					<a ui-sref="root.user" class="btn btn-default">
+						<span class="fa fa-users fa-fw fa-2x"></span>
+					</a>
+					<a ui-sref="root.project" class="btn btn-default">
+						<span class="fa fa-laptop fa-fw fa-2x"></span>
+					</a>
+					<a ui-sref="root.enterprise" class="btn btn-default">
+						<span class="fa fa-suitcase fa-fw fa-2x"></span>
+					</a>
+					<a ui-sref="root.setting" class="btn btn-default">
+						<span class="fa fa-gears fa-fw fa-2x"></span>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<ul class="list-group">
+					<li class="list-group-item"><strong>Projetos</strong></li>
+					<li data-ng-repeat="project in projects" class="list-group-item">
+						<a ui-sref="root.ticketProject({projectID:project.id})">{{ project.title }}</a>
+						<span class="badge">{{ project.total_ticket }}</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</div>

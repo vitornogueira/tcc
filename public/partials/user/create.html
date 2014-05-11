@@ -1,0 +1,31 @@
+<form method="POST" class="pop-box">
+	<legend>Novo usuário</legend>
+	<div class="form-group">
+		<label for="name">Nome:</label>
+		<input type="text" id="name" class="form-control" data-ng-model="user.name" required autofocus>
+	</div>
+	<div class="form-group">
+		<label for="enterprise">Empresa:</label>
+		<select id="enterprise" class="form-control" data-ng-model="user.enterprise" data-ng-options="e.name for e in enterprises" required></select>
+	</div>
+	<div class="form-group">
+		<label>Nível:</label>
+		<label for="nivel-admin">
+			<input type="radio" name="nivel" id="nivel-admin" data-ng-model="user.nivel" value="1" required>
+			Administrador
+		</label>
+		<label for="nivel-client">
+			<input type="radio" name="nivel" id="nivel-client" data-ng-model="user.nivel" value="0" required>
+			Cliente
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="email">E-mail:</label>
+		<input type="email" id="email" class="form-control" data-ng-model="user.email">
+	</div>
+	<div class="form-group">
+		<label for="phone">Telefone:</label>
+		<input type="tel" id="phone" class="form-control" data-ng-model="user.phone" ui-mask="(99) 9999-9999">
+	</div>
+	<button class="btn btn-primary" data-ng-click="create(user)">Criar</button>
+</form>

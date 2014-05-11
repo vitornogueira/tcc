@@ -1,0 +1,107 @@
+<form method="POST" class="pop-box">
+	<legend>{{ enterprise.name }}</legend>
+	<tabset justified="true">
+		<tab heading="Dados">
+			<div class="form-group">
+				<label for="name">Nome:</label>
+				<input type="text" id="name" class="form-control" data-ng-model="enterprise.name" required autofocus>
+			</div>
+			<div class="row">
+				<div class="col-md-3 form-group">
+					<label for="cep">CEP:</label>
+					<input type="text" id="cep" class="form-control" data-ng-model="enterprise.cep" ui-mask="99.999-999">
+				</div>
+				<div class="col-md-9 form-group">
+					<label for="address">Logradouro:</label>
+					<input type="text" id="address" class="form-control" data-ng-model="enterprise.address">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 form-group">
+					<label for="number">Número:</label>
+					<input type="text" id="number" class="form-control" data-ng-model="enterprise.number">
+				</div>
+				<div class="col-md-9 form-group">
+					<label for="complement">Complemento:</label>
+					<input type="text" id="complement" class="form-control" data-ng-model="enterprise.complement">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-10 form-group">
+					<label for="city">Cidade:</label>
+					<input type="text" id="city" class="form-control" data-ng-model="enterprise.city">
+				</div>
+				<div class="col-md-2 form-group">
+					<label for="state">Estado:</label>
+					<input type="text" id="state" class="form-control" data-ng-model="enterprise.state">
+				</div>
+			</div>
+			<input type="hidden" data-ng-model="enterprise.id">
+			<button class="btn btn-primary" data-ng-click="edit(enterprise)">Editar</button>
+		</tab>
+		<tab heading="Telefones">
+			<div data-ng-repeat="phone in enterprise.phones | orderBy:'-nivel'" class="row pop-contact-item">
+				<div class="col-lg-8 form-group">
+					<div class="input-group">
+						<input type="tel" data-ng-model="phone.number" ui-mask="(99) 9999-9999" class="form-control">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" data-ng-show="phone.nivel == 0" data-ng-click="setDefaultPhone(phone)">
+								<span class="fa fa-heart"></span>
+							</button>
+							<button class="btn btn-danger" data-ng-show="phone.nivel == 0" data-ng-click="removePhone(phone)">
+								<span class="fa fa-minus"></span>
+							</button>
+							<button class="btn btn-primary" data-ng-click="editPhone(phone)">
+								<span class="fa fa-pencil-square-o"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 form-group">
+					<div class="input-group">
+						<input type="tel" data-ng-model="enterprise.newphone" ui-mask="(99) 9999-9999" class="form-control">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" data-ng-click="addPhone()" ng-disabled="!enterprise.newphone">
+								<span class="fa fa-plus"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</tab>
+		<tab heading="E-mails">
+			<div data-ng-repeat="email in enterprise.emails | orderBy:'-nivel'" class="row pop-contact-item">
+				<div class="col-lg-8 form-group">
+					<div class="input-group">
+						<input type="tel" data-ng-model="email.email" class="form-control">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" data-ng-show="email.nivel == 0" data-ng-click="setDefaultEmail(email)">
+								<span class="fa fa-heart"></span>
+							</button>
+							<button class="btn btn-danger" data-ng-show="email.nivel == 0" data-ng-click="removeEmail(email)">
+								<span class="fa fa-minus"></span>
+							</button>
+							<button class="btn btn-primary" data-ng-click="editEmail(email)">
+								<span class="fa fa-pencil-square-o"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 form-group">
+					<div class="input-group">
+						<input type="email" data-ng-model="enterprise.newemail" class="form-control">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" data-ng-click="addEmail()" ng-disabled="!enterprise.newemail">
+								<span class="fa fa-plus"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</tab>
+	</tabset>
+</form>

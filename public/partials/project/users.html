@@ -1,0 +1,18 @@
+<div class="pop-box">
+	<div class="form-group">
+		<label for="sponsor">Usuários:</label>
+		<select class="form-control"
+			data-ng-model="user"
+			data-ng-options="u.name for u in users | orderBy:'name'"
+			data-ng-change="addUser()"
+		></select>
+	</div>
+	<ul>
+		<li data-ng-repeat="user in projectUsers | orderBy:'name'" class="pop-project-user">
+			<button data-ng-click="removeUser(user)" class="btn btn-danger btn-xs">
+				<span class="fa fa-minus"></span>
+			</button>
+			{{ user.name }}
+		</li>
+	</ul>
+</div>

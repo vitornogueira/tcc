@@ -1,0 +1,52 @@
+<div class="pop-page-header">
+	<div class="clearfix">
+		<h1 class="pull-left">Usuários</h1>
+		<a class="btn btn-primary pop-btn-new pull-left" ui-sref="root.user.new">Novo</a>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="input-group">
+				<span class="input-group-addon">Filtrar</span>
+				<input type="text" id="filter" class="form-control" data-ng-model="search.name">
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="form-group">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" ng-model="search.status" btn-radio="''">Todos</button>
+					<button type="button" class="btn btn-default" ng-model="search.status" btn-radio="'2'">Ativo</button>
+					<button type="button" class="btn btn-default" ng-model="search.status" btn-radio="'1'">Inativo</button>
+					<button type="button" class="btn btn-default" ng-model="search.status" btn-radio="'0'">Não verificado</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="pull-left primary-sidebar">
+	<ul class="pop-box pop-list">
+		<li data-ng-repeat="user in users | orderBy:'name' | filter:search" class="pop-list-item">
+			<div class="transition" data-ng-class="{'offline': user.status != 2}">
+				<h3 class="pop-user-nivel">
+					<span data-ng-show="user.nivel == 1" class="label label-primary">Admin</span>
+				</h3>
+				<h3 ng-bind-html="user.name | highlight:search.name"></h3>
+				<h5>{{ user.enterprise }}</h5>
+				<p>
+					<strong>Telefone:</strong> {{ user.number | tel }} |
+					<strong>E-mail:</strong> {{ user.email }}
+				</p>
+				<p>
+					<strong>Criado em:</strong> {{ user.create_time | dateToISO | date:'dd/MM/yyyy' }} |
+					<strong>Atualizado em:</strong> {{ user.update_time | dateToISO | date:'dd/MM/yyyy' }}
+				</p>
+			</div>
+			<a class="btn btn-primary" ui-sref="root.user.view({userID:user.id})">
+				Ver <span class="fa fa-eye"></span>
+			</a>
+			<button class="btn" data-ng-if="user.status" data-ng-class="{'btn-primary': user.status == 2}" data-ng-click="updateStatus(user)">
+				Alterar status <span data-ng-class="{'fa-heart-o': user.status == 1}" class="fa fa-heart"></span>
+			</button>
+		</li>
+	</ul>
+</div>
+<div ui-view class="pull-left second-content"></div>

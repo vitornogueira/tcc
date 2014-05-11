@@ -1,0 +1,52 @@
+###SASS###
+
+### SASS Ignores - "Sassy CSS" http://sass-lang.com/
+.sass-cache
+
+
+###SublimeText###
+
+# SublimeText project files
+/*.sublime-project
+*.sublime-workspace
+sftp-config*.json
+
+
+###Windows###
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+
+###Node###
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules/
+
+
+.*
+!.gitignore
+!.htaccess
+!.bowerrc
+!.editorconfig
+!.jshintrc
+*~

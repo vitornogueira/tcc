@@ -1,0 +1,66 @@
+.wrapper
+	position relative
+
+	min-height 100%
+
+.primary-sidebar
+.second-content
+	width 50%
+
+.primary-sidebar
+	padding-right 1em
+
+.second-content
+	padding-left 1em
+
+.overlay
+	z-index 100
+	top -15px
+	position absolute
+	width 100%
+	height 100%
+	padding-bottom 15px
+	background-color rgba(255, 255, 255, .5)
+	opacity 0
+	-webkit-transform translateX(-100%)
+	-moz-transform translateX(-100%)
+	-ms-transform translateX(-100%)
+	-o-transform translateX(-100%)
+	transform translateX(-100%)
+	-webkit-transition .3s opacity
+	-moz-transition .3s opacity
+	-ms-transition .3s opacity
+	-o-transition .3s opacity
+	transition .3s opacity
+	&.is-open
+		opacity 1
+		-webkit-transform translateX(0)
+		-moz-transform translateX(0)
+		-ms-transform translateX(0)
+		-o-transform translateX(0)
+		transform translateX(0)
+
+.wrap-content.is-open
+	-webkit-filter blur(2px)
+	-ms-filter blur(2px)
+	filter blur(2px)
+
+	-webkit-transform translateX(300px)
+	-moz-transform translateX(300px)
+	-ms-transform translateX(300px)
+	-o-transform translateX(300px)
+	transform translateX(300px)
+
+section
+	width 95%
+	max-width 1200px
+	margin 0 auto
+
+.pop-box
+	margin-bottom 1em
+	padding 1.5em
+	background-color #ffffff
+	border 1px solid #cccccc
+	border-bottom-width 2px
+	border-bottom-color #bbbbbb
+	border-radius 4px

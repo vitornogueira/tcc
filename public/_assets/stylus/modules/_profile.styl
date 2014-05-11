@@ -1,0 +1,24 @@
+.pop-title-field
+	width 100%
+	padding .2em 0 .2em .5em
+	background-color rgba(#cccccc, .1)
+	border 0
+	border-bottom 1px solid #cccccc
+	font-size 2em
+	&:focus
+		background-color rgba(#cccccc, .05)
+		outline none
+		+ .pop-title-btn
+			color #999999
+
+.pop-title-btn
+	position absolute
+	top 1em
+	right 5px
+	background-color transparent
+	border 0
+	color #cccccc
+	@media screen and (min-width: 1200px)
+		right 20px
+	&:hover
+		color color-theme !important

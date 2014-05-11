@@ -1,0 +1,88 @@
+<div class="pop-page-header">
+	<div class="pop-box">
+		<div class="pop-title-field-container">
+			<input type="text" data-ng-model="user.name" class="pop-title-field transition">
+			<button data-ng-click="edit(user)" class="pop-title-btn transition"><span class="fa fa-pencil-square-o fa-2x"></span></button>
+		</div>
+		<p>
+			<strong>Telefone:</strong> {{ user.phone | tel }} |
+			<strong>E-mail:</strong> {{ user.email }}
+		</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="pop-box">
+			<h2>Telefones</h2>
+			<div>
+				<div data-ng-repeat="phone in user.phones | orderBy:'-nivel'" class="row pop-contact-item">
+					<div class="col-lg-8 form-group">
+						<div class="input-group">
+							<input type="tel" data-ng-model="phone.number" ui-mask="(99) 9999-9999" class="form-control">
+							<div class="input-group-btn">
+								<button class="btn btn-primary" data-ng-show="phone.nivel == 0" data-ng-click="setDefaultPhone(phone)">
+									<span class="fa fa-heart"></span>
+								</button>
+								<button class="btn btn-danger" data-ng-show="phone.nivel == 0" data-ng-click="removePhone(phone)">
+									<span class="fa fa-minus"></span>
+								</button>
+								<button class="btn btn-primary" data-ng-click="editPhone(phone)">
+									<span class="fa fa-pencil-square-o"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 form-group">
+					<div class="input-group">
+						<input type="tel" data-ng-model="user.newphone" ui-mask="(99) 9999-9999" class="form-control">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" data-ng-click="addPhone()" ng-disabled="!user.newphone">
+								<span class="fa fa-plus"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="pop-box">
+			<h2>E-mails</h2>
+			<div>
+				<div data-ng-repeat="email in user.emails | orderBy:'-nivel'" class="row pop-contact-item">
+					<div class="col-lg-8 form-group">
+						<div class="input-group">
+							<input type="tel" data-ng-model="email.email" class="form-control">
+							<div class="input-group-btn">
+								<button class="btn btn-primary" data-ng-show="email.nivel == 0" data-ng-click="setDefaultEmail(email)">
+									<span class="fa fa-heart"></span>
+								</button>
+								<button class="btn btn-danger" data-ng-show="email.nivel == 0" data-ng-click="removeEmail(email)">
+									<span class="fa fa-minus"></span>
+								</button>
+								<button class="btn btn-primary" data-ng-click="editEmail(email)">
+									<span class="fa fa-pencil-square-o"></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 form-group">
+					<div class="input-group">
+						<input type="email" data-ng-model="user.newemail" class="form-control">
+						<div class="input-group-btn">
+							<button class="btn btn-primary" data-ng-click="addEmail()" ng-disabled="!user.newemail">
+								<span class="fa fa-plus"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<div class="pop-page-header">
+	<div class="clearfix">
+		<h3 class="pull-left">
+			<span class="text-muted">tickets/</span>
+			<a ui-sref="root.ticketProject({projectID:projectID})">{{ projectTitle }}</a>
+		</h3>
+		<a class="btn btn-primary pop-btn-new pull-right" ui-sref="root.ticketNew({projectID:projectID})">Criar ticket</a>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Status</label>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countPriority()" data-ng-model="filter.status" btn-radio="">Todos</button>
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countPriority('0')" data-ng-disabled="!totalTicketStatus.open" data-ng-model="filter.status" btn-radio="'0'">Abertos ({{ totalTicketStatus.open }})</button>
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countPriority('1')" data-ng-disabled="!totalTicketStatus.forApproval" data-ng-model="filter.status" btn-radio="'1'">Em aprovação ({{ totalTicketStatus.forApproval }})</button>
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countPriority('2')" data-ng-disabled="!totalTicketStatus.closed" data-ng-model="filter.status" btn-radio="'2'">Finalizados ({{ totalTicketStatus.closed }})</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Prioridade</label>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countStatus()" data-ng-model="filter.priority" btn-radio="">Todos</button>
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countStatus('0')" data-ng-disabled="!totalTicketPriority.low" data-ng-model="filter.priority" btn-radio="'0'">Baixa ({{ totalTicketPriority.low }})</button>
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countStatus('1')" data-ng-disabled="!totalTicketPriority.medium" data-ng-model="filter.priority" btn-radio="'1'">Média ({{ totalTicketPriority.medium }})</button>
+					<button type="button" class="btn btn-default btn-sm" data-ng-click="countStatus('2')" data-ng-disabled="!totalTicketPriority.high" data-ng-model="filter.priority" btn-radio="'2'">Alta ({{ totalTicketPriority.high }})</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<ul class="list-group">
+	<li data-ng-repeat="ticket in tickets | filter:filter" class="list-group-item">
+		<a ui-sref="root.ticket({ticketID:ticket.ticket_id})" class="pull-left">{{ ticket.ticket_title }}</a>
+		<span class="badge pull-right">#{{ ticket.ticket_id }}</span>
+		<br>
+		<small>
+			<span class="text-muted">Criado por</span>
+			{{ ticket.user_name }} ({{ ticket.enterprise_name }})
+			<span class="text-muted">em</span>
+			{{ ticket.create_time | dateToISO | date:'dd/MM/yyyy' }}
+		</small>
+		<br>
+		<status data-type="ticket" data-status="{{ ticket.status }}"></status>
+		<priority data-value="{{ ticket.priority }}"></priority>
+		<small>
+			{{ ticket.comment_count }} Comentário(s)
+		</small>
+		<br>
+	</li>
+</ul>

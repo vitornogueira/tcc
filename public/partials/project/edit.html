@@ -1,0 +1,29 @@
+<form method="POST" class="pop-box">
+	<legend>{{ project.title }}</legend>
+	<div class="form-group">
+		<label for="title">Título:</label>
+		<input type="text" id="title" class="form-control" data-ng-model="project.title" required autofocus>
+	</div>
+	<div class="form-group">
+		<label for="description">Descrição:</label>
+		<textarea id="description" class="form-control" data-ng-model="project.description" rows="5" required></textarea>
+	</div>
+	<div class="form-group">
+		<label for="costumer">Cliente:</label>
+		<select
+			class="form-control"
+			data-ng-model="costumer"
+			data-ng-options="e.name for e in costumers"
+		></select>
+	</div>
+	<div class="form-group">
+		<label for="sponsor">Sponsor:</label>
+		<select
+			class="form-control"
+			data-ng-model="sponsor"
+			data-ng-options="e.name for e in sponsors"
+		></select>
+	</div>
+	<input type="hidden" data-ng-model="project.id">
+	<button class="btn btn-primary" data-ng-click="edit(project)">Editar</button>
+</form>

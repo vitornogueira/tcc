@@ -1,0 +1,20 @@
+<form ng-submit="login()" name="formLogin" role="form" class="pop-box pop-form-login">
+	<img src="public/assets/img/popcorn.png" height="200" width="785" class="img-responsive" alt="Popcorn">
+	<div ng-show="error">{{ error }}</div>
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" id="email" class="form-control" data-ng-model="user.email" required autofocus>
+	</div>
+	<div class="form-group">
+		<label for="password">Senha</label>
+		<input type="password" id="password" class="form-control" data-ng-model="user.password" required>
+	</div>
+	<div>
+		<label for="rememberme">
+			<input type="checkbox" name="rememberme" id="rememberme" data-ng-model="user.rememberme">Lembrar
+		</label>
+	</div>
+	<div>
+		<input type="submit" value="Entrar" class="btn btn-primary" ng-disabled="formLogin.$invalid">
+	</div>
+</form>

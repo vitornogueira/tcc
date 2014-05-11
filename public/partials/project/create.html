@@ -1,0 +1,20 @@
+<form method="POST" class="pop-box">
+	<legend>Novo projeto</legend>
+	<div class="form-group">
+		<label for="title">Título:</label>
+		<input type="text" id="title" class="form-control" data-ng-model="project.title" required autofocus>
+	</div>
+	<div class="form-group">
+		<label for="description">Descrição:</label>
+		<textarea id="description" class="form-control" data-ng-model="project.description" rows="5" required></textarea>
+	</div>
+	<div class="form-group">
+		<label for="costumer">Cliente:</label>
+		<select id="costumer" class="form-control" data-ng-model="project.costumer" data-ng-options="e.name for e in costumers" required></select>
+	</div>
+	<div class="form-group">
+		<label for="sponsor">Sponsor:</label>
+		<select id="sponsor" class="form-control" data-ng-model="project.sponsor" data-ng-options="e.name for e in sponsors" required></select>
+	</div>
+	<button class="btn btn-primary" data-ng-click="create(project)">Criar</button>
+</form>

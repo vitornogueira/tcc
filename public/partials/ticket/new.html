@@ -1,0 +1,31 @@
+<div class="pop-page-header">
+	<div class="clearfix">
+		<h3 class="pull-left">
+			<span class="text-muted">tickets/</span>
+			<a ui-sref="root.ticketProject({projectID:project.id})">{{ project.title }}</a>
+		</h3>
+	</div>
+	<h1>Novo ticket</h1>
+</div>
+<div class="pop-box">
+	<div class="form-group">
+		<label for="newticket-title">Título</label>
+		<input type="text" id="newticket-title" data-ng-model="newticket.title" class="form-control" autofocus>
+	</div>
+	<div class="form-group">
+		<label>Prioridade</label>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" data-ng-model="newticket.priority" btn-radio="'0'">
+				<i class="fa fa-plane text-success"></i> Baixa
+			</button>
+			<button type="button" class="btn btn-default" data-ng-model="newticket.priority" btn-radio="'1'">
+				<i class="fa fa-fighter-jet text-warning"></i> Média
+			</button>
+			<button type="button" class="btn btn-default" data-ng-model="newticket.priority" btn-radio="'2'">
+				<i class="fa fa-rocket text-danger"></i> Alta
+			</button>
+		</div>
+		<input type="hidden" data-ng-model="newticket.project">
+		<button data-ng-click="save(newticket)" class="btn btn-primary pull-right">Criar</button>
+	</div>
+</div>

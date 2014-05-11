@@ -1,0 +1,45 @@
+.pop-menu
+	z-index 200
+	position fixed
+	top 51px
+	left 0
+	width 300px
+	height 100%
+	padding-top 0.7em
+	background-color #ffffff
+	border-right 1px solid #dddddd
+	-webkit-transform translateX(-100%)
+	-moz-transform translateX(-100%)
+	-ms-transform translateX(-100%)
+	-o-transform translateX(-100%)
+	transform translateX(-100%)
+
+	&.is-open
+		-webkit-transform translateX(0)
+		-moz-transform translateX(0)
+		-ms-transform translateX(0)
+		-o-transform translateX(0)
+		transform translateX(0)
+
+	hr
+		margin 0.7em 0
+
+.pop-menu-item
+	display block
+	padding 0.7em 0 0.7em 0.5em
+	border-left 5px solid #ffffff
+	font-size 16px
+	color #999
+
+	.fa
+		margin-right 7px
+		font-size 20px
+		color color-theme
+
+	&:hover
+	&:focus
+		background-color #f7f7f7
+		border-left-color color-theme
+		outline none
+		text-decoration none
+		color color-theme

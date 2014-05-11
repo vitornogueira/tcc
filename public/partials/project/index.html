@@ -1,0 +1,50 @@
+<div class="pop-page-header">
+	<div class="clearfix">
+		<h1 class="pull-left">Projetos</h1>
+		<a class="btn btn-primary pop-btn-new pull-left" ui-sref="root.project.new">Novo</a>
+	</div>
+	<div class="row">
+		<div class="col-md-7 form-group">
+			<div class="input-group">
+				<span class="input-group-addon">Filtrar</span>
+				<input type="text" id="filter" class="form-control" data-ng-model="search.title">
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="form-group">
+				<label>Ordernar por:</label>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" ng-model="order" btn-radio="'title'">Título</button>
+					<button type="button" class="btn btn-default" ng-model="order" btn-radio="'create_time'">Criação</button>
+					<button type="button" class="btn btn-default" ng-model="order" btn-radio="'update_time'">Atualização</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="pull-left primary-sidebar">
+	<ul class="pop-box pop-list">
+		<li data-ng-repeat="project in projects | orderBy:order | filter:search" class="pop-list-item">
+			<h2 ng-bind-html="project.title | highlight:search.title"></h2>
+			<p>{{ project.description }}</p>
+			<p>
+				<strong>Cliente:</strong> {{ project.costumer_name }} |
+				<strong>Sponsor:</strong> {{ project.sponsor_name }}
+			</p>
+			<p>
+				<strong>Criado em:</strong> {{ project.create_time | dateToISO | date:'dd/MM/yyyy' }} |
+				<strong>Atualizado em:</strong> {{ project.update_time | dateToISO | date:'dd/MM/yyyy' }}
+			</p>
+			<a class="btn btn-primary" ui-sref="root.project.edit({projectID:project.id})">
+				Editar <span class="fa fa-pencil-square-o"></span>
+			</a>
+			<a ui-sref="root.ticketProject({projectID:project.id})" class="btn btn-primary">
+				Solicitações [{{ project.total_ticket }}] <span class="fa fa-tasks"></span>
+			</a>
+			<a class="btn btn-primary" ui-sref="root.project.users({projectID:project.id})">
+				Usuários <span class="fa fa-users"></span>
+			</a>
+		</li>
+	</ul>
+</div>
+<div ui-view class="pull-left second-content"></div>

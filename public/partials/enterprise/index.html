@@ -1,0 +1,38 @@
+<div class="pop-page-header">
+	<div class="clearfix">
+		<h1 class="pull-left">Empresa</h1>
+		<a class="btn btn-primary pop-btn-new pull-left" ui-sref="root.enterprise.new">Nova</a>
+	</div>
+	<div class="row">
+		<div class="col-md-7 form-group">
+			<div class="input-group">
+				<span class="input-group-addon">Filtrar</span>
+				<input type="text" id="filter" class="form-control" data-ng-model="search.name">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="pull-left primary-sidebar">
+	<ul class="pop-box pop-list">
+		<li data-ng-repeat="enterprise in enterprises | orderBy:'name' | filter:search" class="pop-list-item">
+			<div class="transition" data-ng-class="{'offline': enterprise.status != 1}">
+				<h2 ng-bind-html="enterprise.name | highlight:search.name"></h2>
+				<p>
+					<strong>Telefone:</strong> {{ enterprise.number | tel }} |
+					<strong>E-mail:</strong> {{ enterprise.email }}
+				</p>
+				<p>
+					<strong>Criada em:</strong> {{ enterprise.create_time | dateToISO | date:'dd/MM/yyyy' }} |
+					<strong>Atualizada em:</strong> {{ enterprise.update_time | dateToISO | date:'dd/MM/yyyy' }}
+				</p>
+			</div>
+			<a class="btn btn-primary" ui-sref="root.enterprise.edit({enterpriseID:enterprise.id})">
+				Editar <span class="fa fa-pencil-square-o"></span>
+			</a>
+			<button class="btn" data-ng-class="{'btn-primary': enterprise.status == 1}" data-ng-click="updateStatus(enterprise)">
+				Alterar status <span data-ng-class="{'fa-heart-o': enterprise.status == 0}" class="fa fa-heart"></span>
+			</button>
+		</li>
+	</ul>
+</div>
+<div ui-view class="pull-left second-content"></div>

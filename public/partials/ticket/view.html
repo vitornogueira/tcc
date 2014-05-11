@@ -1,0 +1,51 @@
+<div class="pop-page-header">
+	<div class="clearfix">
+		<h3 class="pull-left">
+			<span class="text-muted">tickets/</span>
+			<a ui-sref="root.ticketProject({projectID:ticket.project_id})">{{ ticket.project_title }}</a>
+		</h3>
+		<a class="btn btn-primary pop-btn-new pull-right" ui-sref="root.ticketNew({projectID:ticket.project_id})">Criar ticket</a>
+	</div>
+	<h1>{{ ticket.ticket_title }} <small>#{{ ticket.ticket_id }}</small></h1>
+	<span>
+		<span class="text-muted">Criado por</span>
+		{{ ticket.user_name }} ({{ ticket.enterprise_name }})
+		<span class="text-muted">em</span>
+		{{ ticket.create_time | dateToISO | date:'dd/MM/yyyy' }}
+	</span>
+</div>
+<div class="pop-ticket-comment-wrapper">
+	<div data-ng-repeat="comment in ticket.comments" class="pop-box pop-ticket-comment">
+		<div class="pop-ticket-comment-header">
+			{{ comment.user_name }} ({{ comment.enterprise_name }})
+			<span class="text-muted">em</span>
+			{{ comment.create_time | dateToISO | date:'dd/MM/yyyy' }}
+		</div>
+		<div class="pop-ticket-comment-body">
+			<p>{{ comment.comment }}</p>
+			<status data-type="ticket" data-status="{{ comment.status }}"></status>
+		</div>
+	</div>
+</div>
+<div class="pop-box pop-ticket-comment">
+	<div class="pop-ticket-comment-header">
+		Comentar
+	</div>
+	<div class="pop-ticket-comment-body">
+		<div class="form-group">
+			<textarea data-ng-model="newcomment.comment" class="form-control" rows="5"></textarea>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" data-ng-model="newcomment.status" btn-radio="'0'">
+				<i class="fa fa-exclamation text-danger"></i> Aberto
+			</button>
+			<button type="button" class="btn btn-default" data-ng-model="newcomment.status" btn-radio="'1'">
+				<i class="fa fa-coffee text-warning"></i> Em aprovação
+			</button>
+			<button type="button" class="btn btn-default" data-ng-model="newcomment.status" btn-radio="'2'">
+				<i class="fa fa-smile-o text-success"></i> Finalizado
+			</button>
+		</div>
+		<button data-ng-click="addComment(newcomment)" class="btn btn-primary pull-right">Adicionar</button>
+	</div>
+</div>

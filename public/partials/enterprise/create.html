@@ -1,0 +1,46 @@
+<form method="POST" class="pop-box">
+	<legend>Nova empresa</legend>
+	<div class="form-group">
+		<label for="name">Nome:</label>
+		<input type="text" id="name" class="form-control" data-ng-model="enterprise.name" required autofocus>
+	</div>
+	<div class="form-group">
+		<label for="email">E-mail:</label>
+		<input type="email" id="email" class="form-control" data-ng-model="enterprise.email">
+	</div>
+	<div class="form-group">
+		<label for="phone">Telefone:</label>
+		<input type="tel" id="phone" class="form-control" data-ng-model="enterprise.phone" ui-mask="(99) 9999-9999">
+	</div>
+	<div class="row">
+		<div class="col-md-3 form-group">
+			<label for="cep">CEP:</label>
+			<input type="text" id="cep" class="form-control" data-ng-model="enterprise.cep" ui-mask="99.999-999">
+		</div>
+		<div class="col-md-9 form-group">
+			<label for="address">Logradouro:</label>
+			<input type="text" id="address" class="form-control" data-ng-model="enterprise.address">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 form-group">
+			<label for="number">Número:</label>
+			<input type="text" id="number" class="form-control" data-ng-model="enterprise.number">
+		</div>
+		<div class="col-md-9 form-group">
+			<label for="complement">Complemento:</label>
+			<input type="text" id="complement" class="form-control" data-ng-model="enterprise.complement">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 form-group">
+			<label for="city">Cidade:</label>
+			<input type="text" id="city" class="form-control" data-ng-model="enterprise.city">
+		</div>
+		<div class="col-md-2 form-group">
+			<label for="state">Estado:</label>
+			<input type="text" id="state" class="form-control" data-ng-model="enterprise.state">
+		</div>
+	</div>
+	<button class="btn btn-primary" data-ng-click="create(enterprise)">Criar</button>
+</form>

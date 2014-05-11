@@ -1,0 +1,32 @@
+<div class="pop-box">
+	<h1>{{ user.name }}</h1>
+	<p>
+		<strong>Criado em:</strong> {{ user.create_time | dateToISO | date:'dd/MM/yyyy' }} |
+		<strong>Última atualização:</strong> {{ user.update_time | dateToISO | date:'dd/MM/yyyy' }}
+	</p>
+	<div class="form-group">
+		<select
+			class="form-control"
+			data-ng-model="enterprise"
+			data-ng-options="e.name for e in enterprises"
+		></select>
+	</div>
+	<p><strong>Telefone principal:</strong> {{ user.phone | tel }}</p>
+	<p><strong>Email principal:</strong> <a href="mailto:{{ email.email }}">{{ user.email }}</a></p>
+	<div class="row">
+		<div class="col-lg-6">
+			<h4>E-mails</h4>
+			<ul>
+				<li data-ng-repeat="email in user.emails">
+					<a href="mailto:{{ email.email }}">{{ email.email }}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-6">
+			<h4>Telefones</h4>
+			<ul>
+				<li data-ng-repeat="phone in user.phones">{{ phone.number | tel }}</li>
+			</ul>
+		</div>
+	</div>
+</div>

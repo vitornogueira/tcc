@@ -1,0 +1,20 @@
+.animate
+	&.ng-enter
+	&.ng-leave
+		-webkit-transition .5s ease all
+		-moz-transition .5s ease all
+		-ms-transition .5s ease all
+		-o-transition .5s ease all
+		transition .5s ease all
+
+	&.ng-leave.ng-leave-active
+	&.ng-enter
+		opacity 0
+		margin-top -67px
+
+	&.ng-enter.ng-enter-active
+	&.ng-leave
+		opacity 1
+		margin-top 0
+
+
